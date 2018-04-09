@@ -11,7 +11,11 @@ function updatePriceByProduct(productPrice, index){
 }
 
 function getTotalPrice() {
+  var price = Number(document.getElementById('price').innerText.replace(/^[$]/, ""));
+  var quantity = document.getElementById('quantity').value;
+  var total = price * quantity;
 
+  document.getElementById('total').innerText = "$" + total.toFixed(2);
 }
 
 function createQuantityInput(){
@@ -40,13 +44,13 @@ function createNewItem(){
 
 window.onload = function(){
   var calculatePriceButton = document.getElementById('calc-prices-button');
-  var createItemButton = document.getElementById('new-item-create');
+  // var createItemButton = document.getElementById('new-item-create');
   var deleteButtons = document.getElementsByClassName('btn-delete');
 
   calculatePriceButton.onclick = getTotalPrice;
-  createItemButton.onclick = createNewItem;
+  // createItemButton.onclick = createNewItem;
 
-  for(var i = 0; i<deleteButtons.length ; i++){
+  for(var i = 0; i < deleteButtons.length ; i++){
     deleteButtons[i].onclick = deleteItem;
   }
 };
