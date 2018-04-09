@@ -11,11 +11,13 @@ function updatePriceByProduct(productPrice, index){
 }
 
 function getTotalPrice() {
-  var price = Number(document.getElementById('price').innerText.replace(/^[$]/, ""));
-  var quantity = document.getElementById('quantity').value;
-  var total = price * quantity;
+  for (var i = 0; i < document.getElementsByClassName('product').length; i++) {
+    var price = Number(document.getElementsByClassName('price')[i].innerText.replace(/^[$]/, ""));
+    var quantity = document.getElementsByClassName('quantity')[i].value;
+    var total = price * quantity;
 
-  document.getElementById('total').innerText = "$" + total.toFixed(2);
+    document.getElementsByClassName('total')[i].innerText = "$" + total.toFixed(2);
+  }
 }
 
 function createQuantityInput(){
